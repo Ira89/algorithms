@@ -1,15 +1,13 @@
 #ifndef BINARY_SEARCH_H
 #define BINARY_SEARCH_H
 
-int binarySearch(int arrayOfSearch[], int sizeArray, int key)
-{
+template<typename T>
+T binarySearch(T arrayOfSearch[], int sizeArray, T key){
     int firstIndex = 0;
-    int midIndex = 0;
     int lastIndex = sizeArray - 1;
 
-    while(firstIndex < lastIndex)
-    {
-        midIndex = firstIndex + (lastIndex - firstIndex) / 2;
+    while(firstIndex < lastIndex){
+        int midIndex = firstIndex + (lastIndex - firstIndex) / 2;
         key <= arrayOfSearch[midIndex] ? lastIndex = midIndex : firstIndex = midIndex + 1;
         if(key == arrayOfSearch[lastIndex]) return lastIndex;
     }
