@@ -1,30 +1,31 @@
 #ifndef INSERTION_SORT_H
 #define INSERTION_SORT_H
 
-void insertionSort(int sortArray[], int sizeArray)
-{
-    for(int i = 1; i < sizeArray; ++i)
-    {
-        int temp = sortArray[i];
-        for(int j = i - 1; j >= 0; --j)
-        {
-            if(sortArray[j] < temp) break;
-            sortArray[j + 1] = sortArray[j];
-            sortArray[j] = temp;
+template<typename T>
+void tempValues(T &firstNumber, T &secondNumber){
+    T temp = firstNumber;
+    firstNumber = secondNumber;
+    secondNumber = temp;
+}
+
+template<typename T>
+void insertionSort(T arrForSort[], int sizeArray){
+    for(int step = 1; step < sizeArray; ++step){
+        int index = step;
+        while(arrForSort[index] < arrForSort[index - 1]){
+            tempValues(arrForSort[index], arrForSort[index - 1]);
+            if(--index - 1 < 0) break;
         }
     }
 }
 
-void insertionSortR(int sortArray[], int sizeArray)
-{
-    for(int i = 1; i < sizeArray; ++i)
-    {
-        int temp = sortArray[i];
-        for(int j = i - 1; j >= 0; --j)
-        {
-            if(sortArray[j] > temp) break;
-            sortArray[j + 1] = sortArray[j];
-            sortArray[j] = temp;
+template<typename T>
+void insertionSortR(T arrForSort[], int sizeArray){
+    for(int step = 1; step < sizeArray; ++step){
+        int index = step;
+        while(arrForSort[index] > arrForSort[index - 1]){
+            tempValues(arrForSort[index], arrForSort[index - 1]);
+            if(--index - 1 < 0) break;
         }
     }
 }

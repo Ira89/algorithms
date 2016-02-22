@@ -1,33 +1,38 @@
 #ifndef SELECTION_SORT_H
 #define SELECTION_SORT_H
 
-void selectionSort(int sortArray[], int sizeArray)
-{
-    for(int i = 0; i < sizeArray - 1; ++i)
-    {
-        int indexMinValue = i;
-        for(int j = i + 1; j < sizeArray; ++j)
-            if(sortArray[j] < sortArray[indexMinValue]) indexMinValue = j;
+template<typename T>
+void tempValues(T &firstNumber, T &secondNumber){
+    T temp = firstNumber;
+    firstNumber = secondNumber;
+    secondNumber = temp;
+}
 
-        if(indexMinValue == sortArray[i]) continue;
-        int temp = sortArray[indexMinValue];
-        sortArray[indexMinValue] = sortArray[i];
-        sortArray[i] = temp;
+template<typename T>
+void selectionSort(T arrForSort[], int sizeArray){
+    for(int step = 0; step < sizeArray; ++step){
+        int indexMinValue = step;
+        for(int index = step + 1; index < sizeArray; ++index){
+            if(arrForSort[index] < arrForSort[indexMinValue]) indexMinValue = index;
+        }
+
+        if(indexMinValue != step){
+           tempValues(arrForSort[indexMinValue], arrForSort[step]);
+        }
     }
 }
 
-void selectionSortR(int sortArray[], int sizeArray)
-{
-    for(int i = 0; i < sizeArray - 1; ++i)
-    {
-        int indexMaxValue = i;
-        for(int j = i + 1; j < sizeArray; ++j)
-            if(sortArray[j] > sortArray[indexMaxValue]) indexMaxValue = j;
+template<typename T>
+void selectionSortR(T arrForSort[], int sizeArray){
+    for(int step = 0; step < sizeArray; ++step){
+        int indexMaxValue = step;
+        for(int index = step + 1; index < sizeArray; ++index){
+            if(arrForSort[index] > arrForSort[indexMaxValue]) indexMaxValue = index;
+        }
 
-        if(indexMaxValue == sortArray[i]) continue;
-        int temp = sortArray[indexMaxValue];
-        sortArray[indexMaxValue] = sortArray[i];
-        sortArray[i] = temp;
+        if(indexMaxValue != step){
+            tempValues(arrForSort[indexMaxValue], arrForSort[step]);
+        }
     }
 }
 
