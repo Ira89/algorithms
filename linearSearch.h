@@ -2,11 +2,11 @@
 #define LINEAR_SEARCH_H
 
 template<typename T>
-T linearSearch(T arrayOfSearch[], int sizeArray, T key){
+int linearSearch(T arrayOfSearch[], int sizeArray, T key){
     int lastIndex = sizeArray - 1;
     if(arrayOfSearch[lastIndex] == key) return lastIndex;
 
-    int lastValue = arrayOfSearch[lastIndex];
+    T lastValue = arrayOfSearch[lastIndex];
     arrayOfSearch[lastIndex] = key;
 
     int indexKey = 0;

@@ -2,7 +2,7 @@
 #define BINARY_SEARCH_H
 
 template<typename T>
-T binarySearch(T arrayOfSearch[], int sizeArray, T key){
+int binarySearch(T arrayOfSearch[], int sizeArray, T key){
     int firstIndex = 0;
     int lastIndex = sizeArray - 1;
 
